@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+// CSS Reset, comment out if not required or using a different module
+@import '~minireset.css/minireset';
+/* Global css dosyasımıza css lerimizi ekledik*/
+
+// Bootstrap Css dosyaları
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../node_modules/bootstrap/dist/css/bootstrap-reboot.min.css";
+@import "../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
+@import "./assets/styles/igxTheme.scss"; //ignite ui işlemlerini ana scss dosyamıza dahil ettik
+
+

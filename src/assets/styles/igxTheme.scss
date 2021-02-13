@@ -1,0 +1,11 @@
+@import "~igniteui-angular/lib/core/styles/themes/index";
+
+// Tema renklerimizi belirledik
+ $primary: #731963 !default;
+ $secondary: #ce5712 !default;
+ $app-palette: igx-palette($primary, $secondary);
+
+/* autoprefixer grid: on */
+
+@include igx-core();
+@include igx-theme($default-palette);
