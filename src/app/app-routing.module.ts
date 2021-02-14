@@ -2,14 +2,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { RoleComponent } from './role/role.component';
-import { UserDetailComponent } from './user/user-detail/user-detail.component';
-import { UserComponent } from './user/user.component';
+
 
 //hangi url in hangi componente gideceğiniz belirliyoruz
 const routes: Routes = [
   {
     path:"home",
-    component:HomeComponent
+    loadChildren:() => import("./home/home.module").then(m=>m.HomeModule)
+    //Home modulü routing modüle tanımladık.Home ile ilgili yönlendirmelerden
+    //HomeModule sorumlu olacaktır
   },
   {
     path:"role",
@@ -17,11 +18,7 @@ const routes: Routes = [
   },
   {
     path:"user",
-    component:UserComponent
-  },
-  {
-    path:"user/:id", //buradan id değerini alarak userdetail componentimize yönlendirme yapacağımızı belirtiyoruz
-    component:UserDetailComponent
+    loadChildren:() => import("./user/user.module").then(m=>m.UserModule)
   },
   {
     path:"**", //Tanımlanmamış bir url e gidilirse home ' a yönlendirdik

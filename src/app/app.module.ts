@@ -10,20 +10,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
 import { NgxSpinnerModule } from "ngx-spinner";
+import { RoleComponent } from './role/role.component'; //"ng g c --name" ile compenent ekliyoruz ve root module otomatik olarak tanımlanıyor.
 
-import { IgxButtonModule } from 'igniteui-angular';
-import { HomeComponent } from './home/home.component';
-import { UserComponent } from './user/user.component';
-import { RoleComponent } from './role/role.component';
-import { UserDetailComponent } from './user/user-detail/user-detail.component'; //"ng g c --name" ile compenent ekliyoruz ve root module otomatik olarak tanımlanıyor.
 
 @NgModule({
+  //Home componenti ni buradan sildik.O artık home module de tanımlı olacaktır
   declarations: [
     AppComponent,
-    HomeComponent,
-    UserComponent,
-    RoleComponent,
-    UserDetailComponent
+    RoleComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +25,6 @@ import { UserDetailComponent } from './user/user-detail/user-detail.component'; 
     CommonModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    IgxButtonModule,
     NgxSpinnerModule
   ],
   providers: [],
