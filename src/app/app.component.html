@@ -1,25 +1,29 @@
+<!-- Navbar compenentimizi buraya çağırdık -->
+<app-navbar></app-navbar>
+
 <div class="row">
   <div class="col-md-3">
-    <a routerLink="home">Go To Home</a>
-    <!--routerLink href yerine kullanılıyor -->
+    <!-- Sidebar compenentimizi buraya çağırdık -->
+    <app-sidebar></app-sidebar>
+    <ul>
+
+      <li routerLink="home">Go To Home</li>
+      <li routerLink="role">Go To Role</li>
+      <li routerLink="user">Go To User</li>
+      <li [routerLink]="['user',7]">Go To  User 7 Detail</li>
+      <li [routerLink]="['user',7,'role']">Go To  User 7 Role</li>
+       <!-- query string ya da route data tanımlamaları var ise yukarıdaki şekilde kullanıyoruz -->
+    </ul>
   </div>
-  <div class="col-md-3">
-    <a routerLink="role">Go To Role</a>
-  </div>
-  <div class="col-md-3">
-    <a routerLink="user">Go To User</a>
-  </div>
-  <div class="col-md-3">
-    <a [routerLink]="['user',7]">Go To User 7 Detail</a>
-     <!-- query string ya da route data tanımlamaları var ise bu şekilde kullanıyoruz -->
+  <div class="col-md-9">
+    <router-outlet></router-outlet>
   </div>
 </div>
 
-<button igxButton="raised">App Module Button</button>
 
 
-<router-outlet></router-outlet>
   <!--router-outlet mvc de ki @Html.RenderAction gibi çalışmaktadır -->
   <!--static olarak çağırmak istersek <app-componenet></app-component> olarak çağırılır -->
 
-<ngx-spinner></ngx-spinner>
+<!-- <ngx-spinner></ngx-spinner>
+Spinnerın oluşacağı kısmı seçtik -->

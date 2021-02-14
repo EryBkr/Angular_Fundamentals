@@ -1,0 +1,12 @@
+@import "~igniteui-angular/lib/core/styles/themes/index";
+
+//Navbar Tema renklerimizi çağırdık
+$custom-navbar-theme: igx-navbar-theme(
+  $text-color: #151515,
+  $background: rgb(96,206,129),
+  $idle-icon-color: #151515,
+  $hover-icon-color: #8c8c8c
+);
+
+
+@include igx-navbar($custom-navbar-theme);

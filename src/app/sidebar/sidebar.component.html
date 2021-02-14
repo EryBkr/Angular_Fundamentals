@@ -1,0 +1,19 @@
+<div class="content-wrap" igxLayout>
+  <igx-nav-drawer id="navigation" #drawer [isOpen]="true" [pin]="true" [pinThreshold]="0">
+    <ng-template igxDrawer>
+      <nav>
+        <span igxDrawerItem [isHeader]="true">Sidebar List</span>
+           <!--routerLink href yerine kullanılıyor -->
+        <span routerLink="home"  igxDrawerItem  igxRipple>
+          <span >Home</span>
+        </span>
+        <span routerLink="role"  igxDrawerItem  igxRipple>
+          <span >Role</span>
+        </span>
+        <span routerLink="user" igxDrawerItem  igxRipple>
+          <span >User</span>
+        </span>
+      </nav>
+    </ng-template>
+  </igx-nav-drawer>
+</div>
