@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-12">
+    <h2>One Way Binding</h2>
+    <!-- Componentten UI Tarafına geçiş One Way Binding olarak adlandırılır -->
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Interpolation</h3>
+        <p>
+          <!-- Interpolation bir çok özelliği ile Net MVC deki Razor a benzemektedir -->
+          <!-- TS dosyamızdaki objeye burada eriştik.Onu UI tarafında gösterdik -->
+          Ad :{{user.name}} Soyad: {{user.surname}}
+        </p>
+        <div>
+          <img src="{{user.picture}}" alt="">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h3>Property Binding</h3>
+        <!-- value özniteliğine interpolation kullanmadan değer atadık -->
+        <input [type]="type" [value]="user.name">
+      </div>
+      <div class="col-md-3">
+        <h3>Attribute Binding</h3>
+        <!-- html attributelerine interpolation kullanmadan değer atadık -->
+        <!-- içerisinde one-line-if kullandık -->
+        <input [type]="type" [value]="user.name" [attr.disabled]="user.isEditable ? null : 'disabled'">
+      </div>
+      <div class="col-md-2">
+        <h3>Class Binding</h3>
+        <!-- Red classının elemente eklenme durumuna dinamik karar verdik -->
+        <p [class.red]="user.isEditable">Class Bind Test</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Style Binding</h3>
+        <!-- Color değerinin elemente eklenme durumuna dinamik karar verdik -->
+        <p [style.color]="user.isEditable ? 'green' : 'orange '">Style Bind Test</p>
+      </div>
+      <div class="col-md-4">
+        <h3>Event Binding</h3>
+        <!-- TS tarafında oluşturduğumuz metotları UI tarafındaki elemenlerimize bağlayabiliriz -->
+        <!-- keyup.enter enter tuşuna basılma durumunu kontrol eder -->
+        <input type="text" (keyup.enter)="pushEnter($event.target.value);">
+        <button (click)="buttonClick();">Alert Çalıştır</button>
+      </div>
+      <div class="col-md-4">
+        <h3>Two Way Binding</h3>
+        <!-- Kullanılabilmesi için ilgili module FormsModule 'ün eklenmiş olması gereklidir' -->
+        <!-- Burada yapılan değişiklikler referans tipin değerinide değiştirir -->
+        <input type="text" [(ngModel)]="user.name">
+      </div>
+    </div>
+  </div>
+</div>

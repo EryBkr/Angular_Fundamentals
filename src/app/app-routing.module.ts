@@ -7,23 +7,29 @@ import { RoleComponent } from './role/role.component';
 //hangi url in hangi componente gideceğiniz belirliyoruz
 const routes: Routes = [
   {
-    path:"home",
-    loadChildren:() => import("./home/home.module").then(m=>m.HomeModule)
+    path: "home",
+    loadChildren: () => import("./home/home.module").then(m => m.HomeModule)
     //Home modulü routing modüle tanımladık.Home ile ilgili yönlendirmelerden
     //HomeModule sorumlu olacaktır
   },
   {
-    path:"role",
-    component:RoleComponent
+    path: "role",
+    component: RoleComponent
   },
   {
-    path:"user",
-    loadChildren:() => import("./user/user.module").then(m=>m.UserModule)
+    path: "user",
+    loadChildren: () => import("./user/user.module").then(m => m.UserModule)
+  },
+  //Lazy Loading ile bu componentin modül bilgisini tanımladık
+  {
+    path: "mydataurl",
+    loadChildren: () => import("./data-binding/data-binding.module").then(m => m.DataBindingModule)
   },
   {
-    path:"**", //Tanımlanmamış bir url e gidilirse home ' a yönlendirdik
-    component:HomeComponent
+    path: "**", //Tanımlanmamış bir url e gidilirse home ' a yönlendirdik.En altta olması gerekiyor
+    component: HomeComponent
   }
+
 ];
 
 @NgModule({

@@ -16,6 +16,7 @@ import { SidebarComponent } from './sidebar/sidebar.component'; //"ng g c --name
 import { IgxNavbarModule,IgxIconModule, IgxNavigationDrawerModule } from 'igniteui-angular';
 
 
+
 @NgModule({
   //Home componenti ni buradan sildik.O artık home module de tanımlı olacaktır
   declarations: [
