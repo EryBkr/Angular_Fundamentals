@@ -1,0 +1,26 @@
+<div class="row mt-2">
+  <div class="col-md-12">
+    <input type="text" [(ngModel)]="name">
+  </div>
+  <div class="col-md-12 mt-5">
+    <!-- name property sini TS dosyamızdan okuyacak -->
+    <button class="btn btn-success" (click)="setItem(name);">Set Item</button>
+    <button class="btn btn-primary" (click)="getItem();">Get Item</button>
+    <button class="btn btn-warning" (click)="clearItem();">Clear Item</button>
+    <button class="btn btn-danger" (click)="clearAll();">Clear All</button>
+  </div>
+
+  <p>ng model : {{name}}</p>
+  <p>local storage value : {{localStorageValue}}</p>
+
+  <div class="col-md-12">
+    <input type="text" [(ngModel)]="objName">
+    <input type="text" [(ngModel)]="objSurname">
+    <button (click)="setObject();">Set Object</button>
+    <button (click)="getObject()">Get Object</button>
+    <p>{{localStorageObjectValue}}</p>
+  </div>
+  <div class="col-md-12">
+    <button routerLink="/storage/cookie">Go To Cookie Page</button>
+  </div>
+</div>

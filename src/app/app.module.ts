@@ -14,7 +14,7 @@ import { RoleComponent } from './role/role.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component'; //"ng g c --name" ile compenent ekliyoruz ve root module otomatik olarak tanımlanıyor.
 import { IgxNavbarModule,IgxIconModule, IgxNavigationDrawerModule } from 'igniteui-angular';
-
+import {CookieService} from 'ngx-cookie-service'; //npm install ngx-cookie-service --save ile cookie servisini angular projemize dahil ettik
 
 
 @NgModule({
@@ -36,7 +36,7 @@ import { IgxNavbarModule,IgxIconModule, IgxNavigationDrawerModule } from 'ignite
     IgxIconModule,
     IgxNavigationDrawerModule
   ],
-  providers: [],
+  providers: [CookieService], //Cookie servisini providers a tanımladık , çünkü kendisi component değil bir servistir
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })

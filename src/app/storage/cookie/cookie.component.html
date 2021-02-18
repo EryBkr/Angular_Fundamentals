@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-md-5">
+    <input type="text" [(ngModel)]="name">
+    <button class="btn btn-success" (click)="setItem(name);">Set Cookie</button>
+    <button class="btn btn-primary" (click)="getItem();">Get Cookie</button>
+    <button class="btn btn-warning" (click)="clearItem();">Delete Cookie</button>
+    <button class="btn btn-danger" (click)="clearAll();">Delete All Cookies</button>
+    <button class="btn btn-secondary" (click)="checkCookie();">Check Cookie</button>
+    <p>Name : {{name}}</p>
+    <p>Cookie Value: {{cookieValue}}</p>
+    <p>Cookie Var mı : {{isCookieExist}}</p>
+  </div>
+</div>

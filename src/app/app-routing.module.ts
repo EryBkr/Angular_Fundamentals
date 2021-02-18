@@ -20,10 +20,14 @@ const routes: Routes = [
     path: "user",
     loadChildren: () => import("./user/user.module").then(m => m.UserModule)
   },
-  //Lazy Loading ile bu componentin modül bilgisini tanımladık
+  //Lazy Loading ile bu componentlerin modül bilgisini tanımladık
   {
     path: "mydataurl",
     loadChildren: () => import("./data-binding/data-binding.module").then(m => m.DataBindingModule)
+  },
+  {
+    path: "storage", //domain.com/storage e gidilirse bu yapının modulünü tanımladık
+    loadChildren: () => import("./storage/storage.module").then(m => m.StorageModule)
   },
   {
     path: "**", //Tanımlanmamış bir url e gidilirse home ' a yönlendirdik.En altta olması gerekiyor
