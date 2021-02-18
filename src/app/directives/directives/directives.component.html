@@ -1,0 +1,62 @@
+o<div class="d-flex justify-content-center">
+  <h2>Directives</h2>
+</div>
+<h3>Structural Directives</h3>
+
+<div class="row">
+  <div class="col-md-4">
+    <h4>*ngIf</h4>
+    <input type="text" [(ngModel)]="name">
+    <!-- ng if boolean expression alır ve duruma göre gösterip gizler -->
+    <p *ngIf="title">Title var..</p>
+    <p *ngIf="name==='Eray'">
+      İsim : Eray
+    </p>
+
+    <!-- Duruma göre çalışacak olan template leride belirledik.Birçok zaman büyük
+    html kodları çalıştırmamız gerekebilir her zaman basit string ler ile çalışmayız -->
+    <div *ngIf="title;then titleTemp;else nonTitleTemp;">
+    </div>
+
+    <ng-template #titleTemp>Title var Temp</ng-template>
+    <ng-template #nonTitleTemp>Title Yok Temp</ng-template>
+
+    <button (click)="changeTitle();">Toggle</button>
+  </div>
+  <div class="col-md-4">
+    <h4>ng switch</h4>
+    <input type="text" [(ngModel)]="switchControlName">
+
+    <ul [ngSwitch]="switchControlName">
+      <li *ngSwitchCase="'Eray'">Eray</li>
+      <li *ngSwitchCase="'Berkay'">Berkay</li>
+      <!-- Eşleşme olmaması halinde çalışacak kısım -->
+      <li *ngSwitchDefault>Default</li>
+    </ul>
+  </div>
+  <div class="col-md-4">
+    <h4>*ng For</h4>
+    <!-- index kullanımı opsiyoneldir -->
+    <ul *ngFor="let city of cities;let i=index">
+      <li>Sehir ID: {{city.id}} Şehir Adı: {{city.name}} Index:{{i}}</li>
+    </ul>
+  </div>
+  <h3>Attribute Directives</h3>
+  <div class="col-md-6">
+    <h4>ng Class</h4>
+    <input type="text" [(ngModel)]="color">
+    <p class="font-weight-bold" [ngClass]="{'text-danger': color==='red','bg-primary':color==='blue'}">Renk</p>
+  </div>
+  <div class="col-md-6">
+    <h4>ng Style</h4>
+    <input type="text" [(ngModel)]="color">
+    <p [ngStyle]="{'color': color===''?'orange':color}">Style Binding</p>
+    <!-- color boş ise turuncu olsun diğer türlü renk değerini versin -->
+  </div>
+  <div class="col-md-12">
+    <h4>Custom Directives</h4>
+    <p appHighlight>Directive Test</p>
+    <!-- Directive e değişken göndermek -->
+    <p appHighlight [myColor]="'yellow'">Custom Directive Test 2</p>
+  </div>
+</div>
