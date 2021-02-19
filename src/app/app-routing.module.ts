@@ -34,6 +34,10 @@ const routes: Routes = [
     loadChildren: () => import("./directives/directives.module").then(m => m.DirectivesModule)
   },
   {
+    path: "pipes", //domain.com/pipes e gidilirse bu yapının modulünü tanımladık (Lazy Loading)
+    loadChildren: () => import("./pipes/pipes.module").then(m => m.PipesModule)
+  },
+  {
     path: "**", //Tanımlanmamış bir url e gidilirse home ' a yönlendirdik.En altta olması gerekiyor
     component: HomeComponent
   }

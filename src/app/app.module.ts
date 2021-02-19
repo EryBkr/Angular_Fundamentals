@@ -16,6 +16,15 @@ import { SidebarComponent } from './sidebar/sidebar.component'; //"ng g c --name
 import { IgxNavbarModule,IgxIconModule, IgxNavigationDrawerModule } from 'igniteui-angular';
 import {CookieService} from 'ngx-cookie-service'; //npm install ngx-cookie-service --save ile cookie servisini angular projemize dahil ettik
 
+//Localization İşlemleri için Tarih vs...
+import {registerLocaleData} from "@angular/common";
+import localeTr from "@angular/common/locales/tr";
+import localeTrExtra from "@angular/common/locales/extra/tr";
+
+registerLocaleData(localeTr,"tr-TR",localeTrExtra);
+
+
+
 
 @NgModule({
   //Home componenti ni buradan sildik.O artık home module de tanımlı olacaktır

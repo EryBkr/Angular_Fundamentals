@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-md-3">
+    <h3>Lower Case</h3>
+    <p>Normal: {{title}}</p>
+    <p>Lower Case: {{title | lowercase}}</p>
+  </div>
+  <div class="col-md-3">
+    <h3>Title Case</h3>
+    <p>Normal: {{title}}</p>
+    <p>Title Case: {{title | titlecase}}</p>
+  </div>
+  <div class="col-md-3">
+    <h3>Upper Case</h3>
+    <p>Normal: {{title}}</p>
+    <p>Upper Case: {{title | uppercase}}</p>
+    <p>Turkish: {{TurkishUpperCase}}</p>
+  </div>
+  <div class="col-md-4">
+    <h3>Date</h3>
+    <p>Normal: {{today}}</p>
+    <!-- localization işlemi de uygunlandı -->
+    <p>Date Case: {{today | date:"dd/MMMM/yyyy":"":"tr-TR"}}</p>
+  </div>
+  <div class="col-md-4">
+    <h3>Currency Pipe</h3>
+    <p>Normal: {{cashValue}}</p>
+    <!-- gerekli para birimi şeklinde gösterilir -->
+    <p>Curreny Pipe: {{cashValue | currency : "EUR"}}</p>
+  </div>
+  <div class="col-md-4">
+    <h3>JSON Pipe</h3>
+    <p>Without Pipe: {{myObject}}</p>
+    <p>With Pipe: {{myObject | json}}</p>
+  </div>
+  <div class="col-md-4">
+    <h3>Percent Pipe</h3>
+    <p>Percent: {{percentVal | percent}}</p>
+  </div>
+  <div class="col-md-4">
+    <h3>Slice Pipe</h3>
+    <p>Normal: {{cityName}}</p>
+    <!-- Kaç karakter gösterilecek onu belirliyoruz.Daha farklı kullanımları mevcut -->
+    <p>Slice Pipe : {{cityName | slice:0:3}}</p>
+  </div>
+  <div class="col-md-6">
+    <h3>Custom Pipes</h3>
+    <!--tlConvert custom pipe mızın ismidir -->
+    <p>TRY: {{cashValue | tlConvert}}</p>
+    <br>
+    <b>Cities</b>
+    <ul>
+      <!-- örneğin içerisinde a harfi olan şehirler sadece yazdırılsın -->
+      <!-- bu işlem için pipe kullanacağız -->
+      <li *ngFor="let city of cities | filtering :'a'">{{city}}</li>
+    </ul>
+  </div>
+</div>
