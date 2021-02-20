@@ -1,0 +1,6 @@
+<p>Parent 1 Componentimizden gelen data objesini child1 componentte gösterdik</p>
+<p>Parent Componentten Gelen Değer : {{data.name}} {{data.status}}</p>
+
+
+<!-- output nesnemiz parent ı tetikleyecek ve istediğimiz bir data gönderecek -->
+<button (click)="resetForm.emit(data.name)">Resetle</button>

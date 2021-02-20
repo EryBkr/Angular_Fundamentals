@@ -1,0 +1,31 @@
+<p>parent1 works!</p>
+
+<div class="row">
+  <div class="col-md-4">
+    İsim: <input type="text" [(ngModel)]="name">
+  </div>
+  <div class="col-md-4">
+    <select [(ngModel)]="successStatus">
+      <option value="true">Başarılı</option>
+      <option value="false">Başarısız</option>
+    </select>
+  </div>
+  <div class="col-md-2">
+    <button class="btn btn-sm btn-primary" (click)="postDataMethod();">Çalıştır</button>
+  </div>
+</div>
+<br>
+
+<div *ngIf="postData!=null" class="row">
+  <div class="col-md-12">
+    <h2>Child Component</h2>
+    <!-- child component datayı hangi değişken ismi ile bekliyorsa o şekilde name property mizi gönderdik  -->
+    <!-- Ts dosyamızda oluşturduğumuz objeyi child componentimize gönderiyoruz -->
+    <!-- resetForm child tarafında bulunan bir output yapısıdır -->
+    <app-child1 [data]="postData" (resetForm)="resetFormAction($event);"></app-child1>
+  </div>
+</div>
+
+<button class="btn btn-success" (click)="childTrigger();">Child Alert Tetikle</button>
+
+
