@@ -42,6 +42,10 @@ const routes: Routes = [
     loadChildren: () => import("./parents/parents.module").then(m => m.ParentsModule)
   },
   {
+    path: "forms", //domain.com/forms a gidilirse bu yapının modulünü tanımladık (Lazy Loading)
+    loadChildren: () => import("./forms/forms.module").then(m => m.AngularFormsModule)
+  },
+  {
     path: "**", //Tanımlanmamış bir url e gidilirse home ' a yönlendirdik.En altta olması gerekiyor
     component: HomeComponent
   }

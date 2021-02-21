@@ -1,0 +1,37 @@
+<div class="row">
+  <h2>Reactive Forms - Register</h2>
+  <div class="col-md-12">
+
+    <!-- Ts dosyamızda ki formGroup nesnemizi verdik -->
+    <!-- Submit işlemi neticesinde çalışacak metodu ve grubumuzu verdik -->
+<form [formGroup]="registerForm" (ngSubmit)="save(registerForm)">
+  <!--formGrup infomda property e ait hata var ise hata mesajını gösterelim.Dirty özelliği inputa giriş yapılıp yapılmadığını kontrol eder  -->
+  <p *ngIf="registerForm?.controls?.userName?.errors?.required && registerForm?.controls?.userName?.dirty" style="color:red;">
+    Bu alan zorunludur
+  </p>
+  <!-- Custom Validatorumuzu kullandık.Blacklist bizim oluşturduğumuz bir property idi -->
+  <p style="color:red;" *ngIf="registerForm?.controls?.userName?.errors?.blacklist && registerForm?.controls?.userName?.dirty">
+    ğ Harfini kullanamazsınız
+  </p>
+  <!-- Custom Validatorumuzu kullandık.WhiteSpace bizim oluşturduğumuz bir property idi -->
+  <p style="color:red;" *ngIf="registerForm?.controls?.userName?.errors?.whitespace && registerForm?.controls?.userName?.dirty">
+    Boşluk kullanamazsınız
+  </p>
+  <!-- Custom Async Validatorumuzu kullandık.userNameExist bizim oluşturduğumuz bir property idi -->
+  <p style="color:red;" *ngIf="registerForm?.controls?.userName?.errors?.userNameExist && registerForm?.controls?.userName?.dirty">
+    Kullanıcı adı zaten sistemde kayıtlıdır
+  </p>
+  <label for="">
+    User Name:
+    <input type="text" formControlName="userName">
+  </label>
+  <label for="">
+    Age:
+    <input type="number" formControlName="age">
+  </label>
+  <!-- formumuzun valid olma durumuna göre buttonu disabled yaptık -->
+  <button [disabled]="!registerForm?.valid" type="submit" class="btn btn-success">Kayıt Ol</button>
+</form>
+
+  </div>
+</div>
