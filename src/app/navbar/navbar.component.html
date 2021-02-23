@@ -4,7 +4,8 @@
 
   <!-- Navbar iconları bu şekilde tanımlanır -->
   <igx-icon>search</igx-icon>
-  <igx-icon>account_circle</igx-icon>
+  <!-- user simgesine tıklandığı vakit login ya da logout işlemi yapacaktır -->
+  <igx-icon (click)="toggleLogin();">account_circle</igx-icon>
   <igx-icon>more_vert</igx-icon>
 </igx-navbar>
 

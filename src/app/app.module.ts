@@ -20,6 +20,7 @@ import {CookieService} from 'ngx-cookie-service'; //npm install ngx-cookie-servi
 import {registerLocaleData} from "@angular/common";
 import localeTr from "@angular/common/locales/tr";
 import localeTrExtra from "@angular/common/locales/extra/tr";
+import { UserService } from 'src/lib/services/user.service';
 
 registerLocaleData(localeTr,"tr-TR",localeTrExtra);
 
@@ -45,7 +46,7 @@ registerLocaleData(localeTr,"tr-TR",localeTrExtra);
     IgxIconModule,
     IgxNavigationDrawerModule
   ],
-  providers: [CookieService], //Cookie servisini providers a tanımladık , çünkü kendisi component değil bir servistir
+  providers: [CookieService,UserService], //Cookie servisini ve User servisini providers a tanımladık , çünkü kendisi component değil bir servistir
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })

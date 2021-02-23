@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from 'src/lib/guards/auth.guard';
+import { DeactiveGuardGuard } from 'src/lib/guards/deactive-guard.guard';
 import { HomeComponent } from './home/home.component';
 import { RoleComponent } from './role/role.component';
 
@@ -27,11 +29,13 @@ const routes: Routes = [
   },
   {
     path: "storage", //domain.com/storage e gidilirse bu yapının modulünü tanımladık
-    loadChildren: () => import("./storage/storage.module").then(m => m.StorageModule)
+    loadChildren: () => import("./storage/storage.module").then(m => m.StorageModule),
+    canActivate:[AuthGuard] //lib in altına eklemiş olduğum guard ı burada belirttim. canActive o modüle girdiğimiz gibi çalışacak olan yapıyı belirler
   },
   {
     path: "directives", //domain.com/directives e gidilirse bu yapının modulünü tanımladık (Lazy Loading)
-    loadChildren: () => import("./directives/directives.module").then(m => m.DirectivesModule)
+    loadChildren: () => import("./directives/directives.module").then(m => m.DirectivesModule),
+    // canDeactivate:[DeactiveGuardGuard] Route dan çıktığımız zaman tetiklenecek bir yapıdır
   },
   {
     path: "pipes", //domain.com/pipes e gidilirse bu yapının modulünü tanımladık (Lazy Loading)
@@ -53,7 +57,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{useHash:true})],
+  //useHash:true ile adres çubuğundan yapılan değişikliklerde bile sayfa post-back olmaz,
+  //Angular ın kendi routing stratejisi aktif olmuş olur
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
