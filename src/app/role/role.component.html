@@ -1,1 +1,20 @@
-<p>role works!</p>
+<div class="row">
+  <div class="offset-md-3 col-md-5">
+    <form #roleForm="ngForm" (ngSubmit)="addNewRole(roleForm);">
+      <label for="id">id: </label>
+      <input type="text" name="id" ngModel>
+      <label for="title">Title: </label>
+      <input type="text" name="title" ngModel>
+      <button type="submit">Kaydet</button>
+      <!-- Tek submit buttonu olabileceği için click bind işlemi yaptık -->
+      <button (click)="updateRole(roleForm);">Düzenle</button>
+      <button (click)="deleteRole(roleForm);">Sil</button>
+    </form>
+  </div>
+</div>
+
+<ul>
+  <li *ngFor="let role of rolesData">
+    title: {{role.title}}
+  </li>
+</ul>

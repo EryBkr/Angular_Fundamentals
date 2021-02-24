@@ -10,7 +10,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
 import { NgxSpinnerModule } from "ngx-spinner";
-import { RoleComponent } from './role/role.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component'; //"ng g c --name" ile compenent ekliyoruz ve root module otomatik olarak tanımlanıyor.
 import { IgxNavbarModule,IgxIconModule, IgxNavigationDrawerModule } from 'igniteui-angular';
@@ -22,6 +21,9 @@ import localeTr from "@angular/common/locales/tr";
 import localeTrExtra from "@angular/common/locales/extra/tr";
 import { UserService } from 'src/lib/services/user.service';
 
+//HTTP istekleri için tanımladık
+import {HttpClientModule} from "@angular/common/http";
+
 registerLocaleData(localeTr,"tr-TR",localeTrExtra);
 
 
@@ -31,7 +33,6 @@ registerLocaleData(localeTr,"tr-TR",localeTrExtra);
   //Home componenti ni buradan sildik.O artık home module de tanımlı olacaktır
   declarations: [
     AppComponent,
-    RoleComponent,
     NavbarComponent,
     SidebarComponent
   ],
@@ -44,7 +45,8 @@ registerLocaleData(localeTr,"tr-TR",localeTrExtra);
     NgxSpinnerModule,
     IgxNavbarModule,
     IgxIconModule,
-    IgxNavigationDrawerModule
+    IgxNavigationDrawerModule,
+    HttpClientModule //HTTP istekleri için import ettik
   ],
   providers: [CookieService,UserService], //Cookie servisini ve User servisini providers a tanımladık , çünkü kendisi component değil bir servistir
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

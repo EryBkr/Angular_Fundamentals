@@ -15,8 +15,9 @@ const routes: Routes = [
     //HomeModule sorumlu olacaktır
   },
   {
+    //Lazy Loading ile bu componentin modül bilgisini tanımladık
     path: "role",
-    component: RoleComponent
+    loadChildren: () => import("./role/role.module").then(m => m.RoleModule)
   },
   {
     path: "user",
@@ -30,7 +31,7 @@ const routes: Routes = [
   {
     path: "storage", //domain.com/storage e gidilirse bu yapının modulünü tanımladık
     loadChildren: () => import("./storage/storage.module").then(m => m.StorageModule),
-    canActivate:[AuthGuard] //lib in altına eklemiş olduğum guard ı burada belirttim. canActive o modüle girdiğimiz gibi çalışacak olan yapıyı belirler
+    canActivate: [AuthGuard] //lib in altına eklemiş olduğum guard ı burada belirttim. canActive o modüle girdiğimiz gibi çalışacak olan yapıyı belirler
   },
   {
     path: "directives", //domain.com/directives e gidilirse bu yapının modulünü tanımladık (Lazy Loading)
@@ -50,6 +51,10 @@ const routes: Routes = [
     loadChildren: () => import("./forms/forms.module").then(m => m.AngularFormsModule)
   },
   {
+    path: "maps", //domain.com/maps a gidilirse bu yapının modulünü tanımladık (Lazy Loading)
+    loadChildren: () => import("./map/map.module").then(m => m.MapModule)
+  },
+  {
     path: "**", //Tanımlanmamış bir url e gidilirse home ' a yönlendirdik.En altta olması gerekiyor
     component: HomeComponent
   }
@@ -57,7 +62,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{useHash:true})],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   //useHash:true ile adres çubuğundan yapılan değişikliklerde bile sayfa post-back olmaz,
   //Angular ın kendi routing stratejisi aktif olmuş olur
   exports: [RouterModule]

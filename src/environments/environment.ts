@@ -2,8 +2,14 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+//Geliştirme aşamasında kullanılacak sabit tanımlamaları burada tutuyoruz
 export const environment = {
-  production: false
+  production: false,
+  api:{
+    nestjs:{
+      role:"https://jsonplaceholder.typicode.com/posts"
+    }
+  }
 };
 
 /*
