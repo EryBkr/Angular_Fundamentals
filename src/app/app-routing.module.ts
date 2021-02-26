@@ -55,6 +55,11 @@ const routes: Routes = [
     loadChildren: () => import("./map/map.module").then(m => m.MapModule)
   },
   {
+    //Lazy Loading ile bu componentin modül bilgisini tanımladık
+    path: "file",
+    loadChildren: () => import("./file-upload/file-upload.module").then(m => m.FileUploadModule)
+  },
+  {
     path: "**", //Tanımlanmamış bir url e gidilirse home ' a yönlendirdik.En altta olması gerekiyor
     component: HomeComponent
   }
