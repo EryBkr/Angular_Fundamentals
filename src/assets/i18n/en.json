@@ -1,0 +1,8 @@
+{
+  "app":{
+    "title":"This is a Title"
+  },
+  "toastr":{
+    "message":"Successfuly"
+  }
+}

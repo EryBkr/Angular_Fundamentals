@@ -1,5 +1,5 @@
 <!-- Navbar compenentimizi buraya çağırdık -->
-<app-navbar></app-navbar>
+<app-navbar [lang]="translateService.currentLang" (langChange)="setLanguage($event);"></app-navbar>
 
 <div class="row">
   <div class="col-md-3">

@@ -2,10 +2,18 @@
 
 <igx-navbar title="Angular Tutorial" actionButtonIcon="home" [isActionButtonVisible]="true">
 
+
+  <!-- Select Box For Language Change -->
+  <!-- langeChange ile (Output özelliği) app-componente datayı gönderiyoruz -->
+  <igx-select [value]="lang" (onSelection)="langeChange.emit($event.newSelection.value)">
+    <igx-select-item value="tr">Türkçe</igx-select-item>
+    <igx-select-item value="en">English</igx-select-item>
+  </igx-select>
+
+
   <!-- Navbar iconları bu şekilde tanımlanır -->
   <igx-icon>search</igx-icon>
   <!-- user simgesine tıklandığı vakit login ya da logout işlemi yapacaktır -->
   <igx-icon (click)="toggleLogin();">account_circle</igx-icon>
   <igx-icon>more_vert</igx-icon>
 </igx-navbar>
-

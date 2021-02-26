@@ -14,6 +14,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component'; //"ng g c --name" ile compenent ekliyoruz ve root module otomatik olarak tanımlanıyor.
 import { IgxNavbarModule, IgxIconModule, IgxNavigationDrawerModule } from 'igniteui-angular';
 import { CookieService } from 'ngx-cookie-service'; //npm install ngx-cookie-service --save ile cookie servisini angular projemize dahil ettik
+//Select Box UI Module
+import { IgxSelectModule } from 'igniteui-angular';
 
 //Localization İşlemleri için Tarih vs...
 import { registerLocaleData } from "@angular/common";
@@ -22,8 +24,13 @@ import localeTrExtra from "@angular/common/locales/extra/tr";
 import { UserService } from 'src/lib/services/user.service';
 
 //HTTP istekleri için tanımladık
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AuthInterceptor } from 'src/lib/interceptors/auth.interceptor';
+
+//Translate kütüphaneleri
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+
 
 registerLocaleData(localeTr, "tr-TR", localeTrExtra);
 
@@ -47,7 +54,17 @@ registerLocaleData(localeTr, "tr-TR", localeTrExtra);
     IgxNavbarModule,
     IgxIconModule,
     IgxNavigationDrawerModule,
-    HttpClientModule //HTTP istekleri için import ettik
+    IgxSelectModule,//Select Box
+    HttpClientModule, //HTTP istekleri için import ettik
+    //Translate module tanımlamaları
+    TranslateModule.forRoot({
+      loader:{
+        provide:TranslateLoader,
+        useFactory:HttpLoaderFactory,
+        deps:[HttpClient]
+      }
+    })
+
   ],
   providers: [CookieService, UserService, //Cookie servisini ve User servisini providers a tanımladık , çünkü kendisi component değil bir servistir
     {
@@ -61,3 +78,9 @@ registerLocaleData(localeTr, "tr-TR", localeTrExtra);
 })
 export class AppModule {
 }
+
+//Custom olarak loadFactory oluşturduk ve bu yola json dosyası ekleyeceğiz
+//Componentlerde tanıttığımız json dosyasına göre oradaki value ler kullanılacaktır
+ export function HttpLoaderFactory(http:HttpClient){
+   return new TranslateHttpLoader(http,"./asset/i18n/",".json?cb="+new Date().getTime());
+ }

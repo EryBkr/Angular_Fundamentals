@@ -1,0 +1,8 @@
+{
+  "app":{
+    "title":"Bu bir başlıktır"
+  },
+  "toastr":{
+    "message":"Başarılı"
+  }
+}
