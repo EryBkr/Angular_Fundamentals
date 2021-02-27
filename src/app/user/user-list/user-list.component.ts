@@ -7,9 +7,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserListComponent implements OnInit {
 
+
+  users = [];
+  randomUsers = [
+    {
+      id: 1,
+      name: "Eray"
+    },
+    {
+      id: 2,
+      name: "Berkay"
+    }
+  ];
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  //Random listesinden bir kullanıyı rastgele olarak users dizisine ekliyoruz
+  addRandomUser(){
+    const index=Math.floor(Math.random()*2);
+    this.users.push(this.randomUsers[index]);
   }
 
 }

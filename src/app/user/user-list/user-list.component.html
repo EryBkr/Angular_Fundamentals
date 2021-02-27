@@ -1,1 +1,12 @@
-<p>user-list works!</p>
+<h1>Kullanıcı Listesi</h1>
+<div class="row">
+  <div class="col-md-4">
+    <button class="btn btn-success" (click)="addRandomUser();">Kullanıcı Ekle</button>
+  </div>
+  <div class="col-md-8">
+    <ul *ngIf="users.length>0"></ul>>
+      <li class="user-list-item"  *ngFor="let user of users">{{user.name}}</li>
+    </ul>
+    <h3 *ngIf="users.length===0">Kullanıcı Listesi Boş</h3>
+  </div>
+</div>
